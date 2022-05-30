@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c2a0a9cc-e575-49f0-9176-0a3cb351950b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Movie_Rating_And_Review/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="46088cc1-d4ef-4531-818e-a91abb64234d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Movie_Rating_And_Review/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="9b7131f8-82b3-4fcb-99d9-5ee5bcc18ac4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Movie_Rating_And_Review/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="9a3eb85a-c314-40dd-aad6-0df67eb4c5a3" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Movie_Rating_And_Review/Service1/mex" />
+    <MetadataFile FileName="Movie_Rating_And_Review.xsd" MetadataType="Schema" ID="3653c6b8-25bf-49c8-86cb-7fde59be1544" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Movie_Rating_And_Review/Service1/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="b3293b47-8428-43f0-862a-b13a41d0ce40" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Movie_Rating_And_Review/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movie_Rating_And_Review", "Movie_Rating_And_Review.csproj", "{5AAB2EBC-C737-4F11-B120-D35A80FDF29A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movie_Rating_Web_App", "..\Movie_Rating_Web_App\Movie_Rating_Web_App.csproj", "{8317876B-A59F-46EA-AFBC-B6516EDD9D77}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5AAB2EBC-C737-4F11-B120-D35A80FDF29A} = {5AAB2EBC-C737-4F11-B120-D35A80FDF29A}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AAB2EBC-C737-4F11-B120-D35A80FDF29A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AAB2EBC-C737-4F11-B120-D35A80FDF29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AAB2EBC-C737-4F11-B120-D35A80FDF29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AAB2EBC-C737-4F11-B120-D35A80FDF29A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8317876B-A59F-46EA-AFBC-B6516EDD9D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8317876B-A59F-46EA-AFBC-B6516EDD9D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8317876B-A59F-46EA-AFBC-B6516EDD9D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8317876B-A59F-46EA-AFBC-B6516EDD9D77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA6CF290-D59B-431E-A3EF-92DEF90930FF}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Movie_Rating_Web_App.LoginServiceReference;
+
+namespace Movie_Rating_Web_App
+{
+    public partial class LoginForm : System.Web.UI.Page
+    {
+        LoginServiceReference.Service1Client obj = new LoginServiceReference.Service1Client();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UserDetails userinfo = new UserDetails();
+                userinfo.UserName = TextBox1.Text;
+                userinfo.Password = TextBox2.Text;
+                List<string> msg = obj.LoginUserDetails(userinfo).ToList();
+
+                Label3.Text = "User Name = " + msg.ElementAt(0) + " Password = " + msg.ElementAt(1);
+            }
+            catch (Exception ex)
+            {
+                Label3.Text = "Wrong Id Or Password";
+            }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+        }
+    }
+}

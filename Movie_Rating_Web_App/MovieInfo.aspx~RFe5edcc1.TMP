@@ -1,0 +1,447 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MovieInfo.aspx.cs" Inherits="Movie_Rating_Web_App.MovieInfo" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Marvel Movie Rating</title>
+
+    <%-- bootstrap css --%>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <%-- bootstrap js --%>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link href="fontawesome/css/all.css" rel="stylesheet" />
+    <!-- footer -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="stylesheet" href="footer/css/ionicons.min.css" />
+    <link rel="stylesheet" href="footer/css/style.css" />
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="font-size: 20px; background-color: #121212; padding-top: -500px;">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="/">
+            <img src="imgs/logo.png" style="width: 80px;" alt="MCU" />
+        </a>
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/terms/">Terms</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="LoginForm.aspx"><span class="fa fa-arrow-circle-right">&nbsp Login</span></a>
+            </li>
+            <li class="nav-item" style="padding-right: 0px;">
+                <a class="nav-link" href="Registration.aspx"><span class="fa fa-user">&nbsp Sign Up</span></a>
+            </li>
+        </ul>
+    </nav>
+    <form id="form1" runat="server">
+
+        <section style="background-color: #111111; color: white;">
+            <hr style="margin-top: 0px; height: 2px; background-color: #EC1D23;" />
+
+            <div class="movie_information" style="margin-right: 0px; margin-left: 0px;">
+                <div class="container">
+                    <div class="m_i-detail row">
+
+                        <div class="col-md-9">
+                            <div class="m_i-d-content">
+                                <div id="block-rating" class="fmrating">
+                                    <div class="fmr-score">
+                                        <span>Score: 
+                                            <strong>9.5</strong>
+                                        </span>/ 206 rated
+                                    </div>
+                                    <div class="fmr-buttons">
+                                        <div id="btn-rate">
+                                            <button onclick="like(71326)" type="button" class="btn btn-sm btn-fmrate fmr-good" style="margin-left: 3px;"><span class="mr-2">👍</span>Like</button>
+                                            <button onclick="dislike(71326)" type="button" class="btn btn-sm btn-fmrate fmr-bad" style="margin-left: 9px;"><span class="mr-2">👎</span>Dislike</button>
+                                        </div>
+                                        <!--<div style="display: none;" id="vote-loading">
+                                            <div class="loading-relative">
+                                                <div class="loading">
+                                                    <div class="span1"></div>
+                                                    <div class="span2"></div>
+                                                    <div class="span3"></div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                </div>
+
+                                <asp:DataList ID="DataList1" runat="server" RepeatDirection="Horizontal" RepeatColumns="1" CssClass="">
+                                    <ItemTemplate>
+
+                                        <div class="film-detail p-lg-5 p-sm-3">
+                                            <a href="MovieInfo.aspx?movie_id=<%#Eval("Movie_id") %>">
+                                                <img alt="Spider-Man: No Way Home" class="mx-auto" src="https://img.fmoviesto.cc/xxrz/250x400/232/44/54/4454b905c18670de60b09fd624fccd0c/4454b905c18670de60b09fd624fccd0c.jpg" /></a>
+                                            <h2 class="heading-name"><%#Eval("name") %></h2>
+                                            <div class="stats">
+                                                <span class="item mr-3">
+                                                    <i class="fas fa-star mr-2"><%#Eval("imdb_rating") %></i>
+                                                </span>
+                                                <span class="item mr-3"><%#Eval("duration") %></span>
+                                            </div>
+                                            <div class="des"></div>
+                                            <div class="elements">
+                                                <div class="row-line">
+                                                    <span class="type">Country:</span>
+                                                    <%#Eval("country") %>
+                                                </div>
+                                                <div class="row-line">
+                                                    <span class="type">Genre:</span>
+                                                    <%#Eval("genre") %>
+                                                </div>
+                                                <div class="row-line">
+                                                    <span class="type">Released:</span> <%#Eval("released") %>
+                                                </div>
+                                                <div class="row-line">
+                                                    <span class="type">Production:</span>
+                                                    <%#Eval("production") %>
+                                                </div>
+                                                <div class="row-line">
+                                                    <span class="type">Casts:</span>
+                                                    <%#Eval("casts") %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:DataList>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="comment-box ml-2">
+                                    <h4>Add a comment</h4>
+                                    <div class="rating">
+                                        <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                        <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                        <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                        <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                        <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                    </div>
+                                    <div class="comment-area">
+                                        <textarea class="form-control" placeholder="what is your view?" rows="4"></textarea>
+                                    </div>
+                                    <div class="comment-btns mt-2">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="pull-left">
+                                                    <button class="btn btn-success btn-sm">Cancel</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="pull-right">
+                                                    <button class="btn btn-success send btn-sm">Send <i class="fa fa-long-arrow-right ml-1"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div id="comment" class="col-md-12">
+                        <section>
+                            <h2 style="margin-bottom: 20px; font-size: 2em; color: #e9ecef; line-height: 1.3em; font-weight: 500;">Reviews:</h2>
+                            <span class="type">Name:</span>
+                            <div style="background-color: white; border-radius: 20px;">
+                                <div data-width="100%" data-colorscheme="dark" data-order-by="reverse_time" data-numposts="3"  fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=765&amp;height=100&amp;href=https%3A%2F%2Ffmoviesto.cc%2Fmovie%2Fspider-man-no-way-home-2021-full-71326&amp;locale=vi_VN&amp;numposts=10&amp;sdk=joey&amp;version=v4.0&amp;width=" style="width: 100%;">
+                                    <textarea class="form-control fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop" placeholder="comment"></textarea>    
+                                </div>
+                                 <button type="submit" class="btn-primary">Submit</button>
+                                <!--<script src="https://apis.google.com/js/plusone.js">
+                                    </script>
+                                    <div class="g-comments"
+                                        data-href="https://localhost:44333/movieinfo.aspx"
+                                        data-width="580"
+                                        data-first_party_property="BLOGGER"
+                                        data-view_type="FILTERED_POSTMOD">
+                                    </div>
+                            </div>
+                            <br />
+                        </section>
+                    </div>  -->
+
+                </div>
+            </div>
+            <style>
+                .movie_information {
+                    position: relative;
+                }
+
+                .container {
+                    width: 100%;
+                    max-width: 94%;
+                    padding-right: 15px;
+                    padding-left: 15px;
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+
+                .movie_information .m_i-detail {
+                    /* float: left; */
+                    /* width: 65%; */
+                    color: #6c757d;
+                }
+
+                    .movie_information .m_i-detail .m_i-d-poster {
+                        width: 300px;
+                        /* float: left; */
+                        border: 3px solid rgba(255,255,255,.2);
+                        border-radius: 10px;
+                        overflow: hidden;
+                    }
+
+                .film-poster {
+                    width: 100%;
+                    padding-bottom: 148%;
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 4px;
+                }
+
+                    .film-poster .film-poster-img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        width: 100%;
+                        min-height: 100%;
+                    }
+
+                .fmrating {
+                    position: absolute;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    top: 5px;
+                    right: 0;
+                    font-size: 18px;
+                    min-width: 180px;
+                }
+
+                    .fmrating .fmr-score {
+                        padding: 0;
+                        margin: 5px 0 12px;
+                        text-align: center;
+                    }
+
+                    .fmrating .fmr-buttons {
+                        margin-bottom: 5px;
+                        display: block;
+                    }
+
+                        .fmrating .fmr-buttons .btn-fmrate {
+                            width: calc(50% - 6px);
+                            margin-bottom: 5px;
+                            margin-top: 10px;
+                            float: left;
+                            padding: 0;
+                            line-height: 36px;
+                            font-size: 13px;
+                            background: #ddd;
+                            border-radius: 25px;
+                        }
+
+                .btn:not(:disabled):not(.disabled) {
+                    cursor: pointer;
+                }
+
+                .btn {
+                    position: relative;
+                    border: none;
+                    overflow: hidden;
+                }
+
+                .btn {
+                    display: inline-block;
+                    font-weight: 400;
+                    text-align: center;
+                    white-space: nowrap;
+                    vertical-align: middle;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    border: 1px solid transparent;
+                    padding: 0.375rem 0.75rem;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    border-radius: 0.25rem;
+                    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                }
+
+                .m_i-d-content .heading-name {
+                    font-size: 3em;
+                    color: #e9ecef;
+                    line-height: 1.3em;
+                    font-weight: 500;
+                    margin-bottom: 10px;
+                    padding-right: 190px;
+                    margin: 0 0 10px;
+                }
+
+                .m_i-d-content .stats {
+                    margin-bottom: 20px;
+                    padding-right: 190px;
+                    font-size: 20px;
+                }
+
+                .m_i-d-content .des {
+                    margin-bottom: 20px;
+                    font-size: 116px;
+                    line-height: 1.5em;
+                }
+
+                .elements .row-line {
+                    position: relative;
+                    margin-bottom: 10px;
+                    overflow: hidden;
+                    padding-left: 150px;
+                    line-height: 2em;
+                    font-size: 20px;
+                }
+
+                    .elements .row-line .type {
+                        position: absolute;
+                        left: 0;
+                    }
+
+                .m_i-spacing {
+                    height: 30px;
+                    display: inline-block;
+                    width: 100%;
+                }
+
+                
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 20px;
+    width: 450px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 6px;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1)
+}
+
+.comment-box {
+    padding: 5px
+}
+
+.comment-area textarea {
+    resize: none;
+    border: 1px solid #ad9f9f
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ffffff;
+    outline: 0;
+    box-shadow: 0 0 0 1px rgb(255, 0, 0) !important
+}
+
+.send {
+    color: #fff;
+    background-color: #ff0000;
+    border-color: #ff0000
+}
+
+.send:hover {
+    color: #fff;
+    background-color: #f50202;
+    border-color: #f50202
+}
+
+.rating {
+    display: flex;
+    margin-top: -10px;
+    flex-direction: row-reverse;
+    margin-left: -4px;
+    float: left
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 19px;
+    font-size: 25px;
+    color: #ff0000;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+            </style>
+        </section>
+        <!-- FOOTER -->
+
+        <hr style="margin-top: 0px; margin-bottom: 0px; height: 2px; background-color: white;" />
+
+        <footer class="footer-07" style="margin-bottom: -20px; background-color: #EC1D23;">
+            <div class="container" style="margin-top: -50px; margin-bottom: -100px;">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 text-center">
+                        <h2 class="footer-heading"><a href="#" class="logo">MarvelReview.com</a></h2>
+                        <p class="menu">
+                            <a style="color: white;" href="/">Home</a>
+                            <a style="color: white;" href="/about/">About</a>
+                            <a style="color: white;" href="LoginForm.aspx">Login</a>
+                            <a style="color: white;" href="Registration.aspx">SignUp</a>
+                            <a style="color: white;" href="/terms/">Terms</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-12 text-center">
+                        <p style="color: white;" class="copyright">
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                            All rights reserved
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
+
+
